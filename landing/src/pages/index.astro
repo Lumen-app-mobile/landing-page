@@ -1,0 +1,638 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/landing/Navbar.astro";
+import Button from "../components/ui/Button.astro";
+import MaterialIcon from "../components/ui/MaterialIcon.astro";
+import logo from "../assets/logo.svg";
+import moneyPattern from "../assets/eb150e90-8338-40f6-b41a-383ede3fa8b6.webp";
+import homeScreen from "../assets/1c915908-68f4-49dd-83f1-52b66bd8dedd.webp";
+import productsScreen from "../assets/ChatGPT Image 19 may 2026, 12_20_09 (2).webp";
+
+const features = [
+  {
+    title: "Gastos claros",
+    copy: "Ve en segundos cuánto se va en compras, ocio y obligaciones sin abrir una hoja de cálculo.",
+    tone: "primary",
+    icon: "chart",
+  },
+  {
+    title: "Tickets sin fricción",
+    copy: "Guarda tickets y compras con un flujo pensado para revisar rápido antes de cerrar el gasto.",
+    tone: "secondary",
+    icon: "scan",
+  },
+  {
+    title: "Transacciones revisables",
+    copy: "Corrige comercios, importes y productos para que tu historial siga limpio y útil.",
+    tone: "accent",
+    icon: "receipt",
+  },
+  {
+    title: "Categorías para ahorrar",
+    copy: "Separa obligación, ahorro y ocio para detectar patrones y tomar mejores decisiones.",
+    tone: "category",
+    icon: "wallet",
+  },
+];
+
+const steps = [
+  {
+    title: "Connect",
+    copy: "Empieza con tus datos diarios y deja Lumen listo para ordenar cada compra.",
+  },
+  {
+    title: "Track",
+    copy: "Registra tickets, revisa productos y entiende qué está moviendo tu presupuesto.",
+  },
+  {
+    title: "Save",
+    copy: "Encuentra fugas pequeñas, ajusta hábitos y protege el dinero que quieres apartar.",
+  },
+];
+
+const testimonials = [
+  {
+    quote: "Por fin veo mis gastos por tipo sin dedicar la tarde a ordenar recibos.",
+    name: "Clara Medina",
+    city: "Valencia",
+  },
+  {
+    quote: "Me ayuda a revisar tickets del súper y entender qué compras se repiten cada semana.",
+    name: "Mateo Ruiz",
+    city: "Madrid",
+  },
+  {
+    quote: "La separación entre obligación, ahorro y ocio hizo que mi presupuesto fuera evidente.",
+    name: "Lucía Torres",
+    city: "Sevilla",
+  },
+];
+---
+
+<BaseLayout
+  title="Lumen — Claridad para tus finanzas personales"
+  description="Lumen es una app móvil para entender tus gastos, revisar tickets y encontrar oportunidades reales de ahorro."
+>
+  <div class="page-shell">
+    <Navbar />
+    <main id="top">
+      <section class="hero container">
+        <div class="hero-copy">
+          <p class="section-kicker">Personal finance, made visible</p>
+          <h1>Controla tus gastos antes de que desaparezca el mes.</h1>
+          <p class="hero-lead">
+            Lumen convierte tickets, compras y categorías en una lectura clara de tu dinero.
+            Entra, revisa y decide mejor sin pelearte con tablas ni tecnicismos.
+          </p>
+          <div class="hero-actions" id="download">
+            <Button href="https://play.google.com/store" variant="primary" label="Download for Android">
+              <MaterialIcon name="android" size={18} />
+              Download for Android
+            </Button>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Mockup principal de Lumen">
+          <img
+            class="phone-mockup"
+            src={homeScreen.src}
+            width={homeScreen.width}
+            height={homeScreen.height}
+            alt="Pantalla principal de Lumen en un móvil con resumen de recibos y dinero restante"
+            loading="eager"
+            decoding="async"
+          />
+          <div class="floating-note note-primary">
+            <span>Monthly view</span>
+            <strong>+18% visibility</strong>
+          </div>
+          <div class="floating-note note-secondary">
+            <span>Saved this week</span>
+            <strong>42 EUR</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="section features-section" id="features">
+        <div class="container">
+          <p class="section-kicker">Features</p>
+          <h2 class="section-title">Una app pensada para ver el dinero con calma.</h2>
+          <div class="features-grid">
+            {features.map((feature) => (
+              <article class={`feature-card tone-${feature.tone}`}>
+                <div class="card-top">
+                  <div class="icon-box">
+                    {feature.icon === "chart" && (
+                      <MaterialIcon name="query_stats" />
+                    )}
+                    {feature.icon === "scan" && (
+                      <MaterialIcon name="document_scanner" />
+                    )}
+                    {feature.icon === "receipt" && (
+                      <MaterialIcon name="receipt_long" />
+                    )}
+                    {feature.icon === "wallet" && (
+                      <MaterialIcon name="savings" />
+                    )}
+                  </div>
+                  <div class="card-referent">{feature.title.split(" ")[0]}</div>
+                </div>
+                <h3>{feature.title}</h3>
+                <p>{feature.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="section collage-section">
+        <div class="container collage-grid">
+          <div class="collage-copy">
+            <p class="section-kicker">Screenshots</p>
+            <h2 class="section-title">Del ticket al patrón de gasto en un flujo continuo.</h2>
+            <p class="section-copy">
+              Lumen agrupa la lectura diaria en tres momentos: revisar el resumen, abrir el detalle y ver qué categoría necesita atención.
+            </p>
+          </div>
+          <div class="screenshots-collage" aria-label="Capturas de Lumen">
+            <img
+              class="collage-bg"
+              src={moneyPattern.src}
+              width={moneyPattern.width}
+              height={moneyPattern.height}
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              class="collage-phone collage-phone-home"
+              src={homeScreen.src}
+              width={homeScreen.width}
+              height={homeScreen.height}
+              alt="Dashboard de Lumen con últimos recibos, total gastado y dinero restante"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              class="collage-phone collage-phone-products"
+              src={productsScreen.src}
+              width={productsScreen.width}
+              height={productsScreen.height}
+              alt="Pantalla de productos de Lumen con categorías de gasto y compras destacadas"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="section how-section" id="how-it-works">
+        <div class="container">
+          <p class="section-kicker">How it works</p>
+          <h2 class="section-title">Tres pasos para pasar de compras sueltas a decisiones claras.</h2>
+          <div class="steps-grid">
+            {steps.map((step, index) => (
+              <article class="step-card">
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{step.title}</h3>
+                <p>{step.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="section testimonials-section" id="testimonials">
+        <div class="container">
+          <p class="section-kicker">Testimonials</p>
+          <h2 class="section-title">Historias pequeñas, decisiones mejores.</h2>
+          <div class="testimonials-grid">
+            {testimonials.map((item) => (
+              <figure class="testimonial-card">
+                <div class="stars" aria-label="Valoración de 5 estrellas">
+                  <MaterialIcon name="star" size={20} />
+                  <MaterialIcon name="star" size={20} />
+                  <MaterialIcon name="star" size={20} />
+                  <MaterialIcon name="star" size={20} />
+                  <MaterialIcon name="star" size={20} />
+                </div>
+                <blockquote>{item.quote}</blockquote>
+                <figcaption>
+                  <strong>{item.name}</strong>
+                  <span>{item.city}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <a class="footer-brand" href="#top" aria-label="Ir al inicio de Lumen">
+          <img src={logo.src} width="194" height="164" alt="" />
+          <span>lumen</span>
+        </a>
+        <p>Claridad diaria para tus gastos, tickets y decisiones de ahorro.</p>
+        <nav aria-label="Legal">
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="https://x.com" aria-label="Lumen en X">
+            <MaterialIcon name="public" size={20} />
+          </a>
+          <a href="https://www.linkedin.com" aria-label="Lumen en LinkedIn">
+            <MaterialIcon name="alternate_email" size={20} />
+          </a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>
+
+<style>
+  .hero {
+    display: grid;
+    min-height: calc(100dvh - var(--spacing-s20));
+    align-items: center;
+    gap: var(--spacing-s10);
+    padding-block: var(--spacing-s12) var(--spacing-s16);
+  }
+
+  .hero-copy {
+    animation: rise-in 520ms ease both;
+  }
+
+  h1 {
+    max-width: var(--size-copy-lg);
+    margin: 0;
+    font-family: var(--font-primary), monospace;
+    font-size: clamp(var(--font-size-4xl), 10vw, var(--font-size-7xl));
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+  }
+
+  .hero-lead {
+    max-width: var(--size-copy-md);
+    margin: var(--spacing-s5) 0 0;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-lg);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-s3);
+    margin-top: var(--spacing-s8);
+  }
+
+  .hero-visual {
+    position: relative;
+    display: grid;
+    min-height: var(--size-hero-visual-min);
+    place-items: center;
+    background:
+      radial-gradient(circle at 26% 20%, var(--color-accent1-v3), transparent 14rem),
+      radial-gradient(circle at 84% 74%, var(--color-secondary-v3), transparent 13rem),
+      linear-gradient(135deg, var(--color-primary-v4), var(--color-primary-v2));
+    box-shadow: var(--shadow-lg);
+    animation: rise-in 620ms 120ms ease both;
+  }
+
+  .phone-mockup {
+    width: min(62vw, var(--size-phone-max));
+    max-height: 45rem;
+    height: auto;
+    object-fit: contain;
+    box-shadow: var(--shadow-md);
+  }
+
+  .floating-note {
+    position: absolute;
+    display: grid;
+    gap: var(--spacing-s1);
+    border: var(--spacing-px) solid var(--color-border-strong);
+    padding: var(--spacing-s3);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-md);
+    font-family: var(--font-primary), monospace;
+  }
+
+  .floating-note span {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-xs);
+  }
+
+  .floating-note strong {
+    font-size: var(--font-size-sm);
+  }
+
+  .note-primary {
+    top: var(--spacing-s8);
+    left: var(--spacing-s5);
+  }
+
+  .note-secondary {
+    right: var(--spacing-s5);
+    bottom: var(--spacing-s8);
+    background: var(--color-accent1-v2);
+  }
+
+  .features-section {
+    background: var(--color-surface);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-auto-rows: 1fr;
+    gap: var(--spacing-s4);
+    margin-top: var(--spacing-s8);
+  }
+
+  .feature-card,
+  .step-card,
+  .testimonial-card {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    gap: var(--spacing-s4);
+    border: var(--border-brutal) solid var(--color-base-black);
+    padding: var(--spacing-card-block) var(--spacing-card-inline);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-card);
+  }
+
+  .feature-card {
+    animation: card-in 420ms ease both;
+  }
+
+  .feature-card:nth-child(2) {
+    animation-delay: 70ms;
+  }
+
+  .feature-card:nth-child(3) {
+    animation-delay: 140ms;
+  }
+
+  .feature-card:nth-child(4) {
+    animation-delay: 210ms;
+  }
+
+  .feature-card h3,
+  .step-card h3 {
+    margin: 0;
+    font-family: var(--font-primary), monospace;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-heading);
+  }
+
+  .feature-card p,
+  .step-card p {
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+
+  .icon-box {
+    display: grid;
+    width: var(--spacing-s12);
+    height: var(--spacing-s12);
+    place-items: center;
+    border: calc(var(--spacing-px) * 2) solid var(--color-base-black);
+    background: var(--color-surface);
+  }
+
+  .feature-card {
+    align-items: flex-start;
+  }
+
+  .card-top {
+    display: flex;
+    width: 100%;
+    min-height: var(--spacing-s12);
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-s4);
+    padding: var(--spacing-s1);
+  }
+
+  .card-referent {
+    color: var(--color-text-inverse);
+    font-family: var(--font-primary), monospace;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .tone-primary {
+    background: var(--color-surface);
+  }
+
+  .tone-primary .card-top {
+    background: var(--color-primary-v1);
+  }
+
+  .tone-secondary {
+    background: var(--color-surface);
+  }
+
+  .tone-secondary .card-top {
+    background: var(--color-secondary-v1);
+  }
+
+  .tone-accent {
+    background: var(--color-surface);
+  }
+
+  .tone-accent .card-top {
+    background: var(--color-accent1-v1);
+  }
+
+  .tone-accent .card-referent {
+    color: var(--color-base-black);
+  }
+
+  .tone-category {
+    background: var(--color-surface);
+  }
+
+  .tone-category .card-top {
+    background: var(--color-category-ahorro-v1);
+  }
+
+  .collage-grid {
+    display: grid;
+    gap: var(--spacing-s8);
+    align-items: center;
+  }
+
+  .screenshots-collage {
+    position: relative;
+    min-height: var(--size-min-page);
+    overflow: hidden;
+    border: var(--border-brutal) solid var(--color-base-black);
+    background: var(--color-primary-v4);
+    box-shadow: var(--shadow-lg);
+    isolation: isolate;
+  }
+
+  .collage-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .collage-phone {
+    position: absolute;
+    width: clamp(10rem, 38vw, 18rem);
+    height: auto;
+    border: var(--spacing-px) solid var(--color-base-black);
+    box-shadow: var(--shadow-md);
+  }
+
+  .collage-phone-home {
+    top: 9%;
+    left: 8%;
+    transform: rotate(-5deg);
+  }
+
+  .collage-phone-products {
+    right: 7%;
+    bottom: -8%;
+    transform: rotate(5deg);
+  }
+
+  .how-section {
+    background: linear-gradient(180deg, var(--color-primary-v4), var(--color-accent3-v4));
+  }
+
+  .steps-grid,
+  .testimonials-grid {
+    display: grid;
+    grid-auto-rows: 1fr;
+    gap: var(--spacing-s4);
+    margin-top: var(--spacing-s8);
+  }
+
+  .step-card span {
+    color: var(--color-secondary);
+    font-family: var(--font-primary), monospace;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .testimonials-section {
+    background: var(--color-surface);
+  }
+
+  .testimonial-card {
+    margin: 0;
+  }
+
+  .stars {
+    display: flex;
+    gap: var(--spacing-s0-5);
+    color: var(--color-accent1-v1);
+  }
+
+  blockquote {
+    flex: 1;
+    margin: var(--spacing-s4) 0 var(--spacing-s5);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-body);
+  }
+
+  figcaption {
+    display: grid;
+    gap: var(--spacing-s1);
+    font-family: var(--font-primary), monospace;
+  }
+
+  figcaption span {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+  }
+
+  .footer {
+    border-top: var(--spacing-px) solid var(--color-border);
+    padding-block: var(--spacing-s8);
+    background: var(--color-background);
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: var(--spacing-s5);
+  }
+
+  .footer-brand {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    gap: var(--spacing-s2);
+    font-family: var(--font-primary), monospace;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .footer-brand img {
+    width: var(--spacing-s10);
+    height: auto;
+  }
+
+  .footer p {
+    max-width: var(--size-copy-sm);
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+
+  .footer nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-s4);
+    color: var(--color-text-muted);
+    font-family: var(--font-primary), monospace;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .footer nav a:hover {
+    color: var(--color-text);
+  }
+
+  @media (min-width: 40rem) {
+    .features-grid,
+    .steps-grid,
+    .testimonials-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .hero,
+    .collage-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(24rem, 0.8fr);
+    }
+
+    .features-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .feature-card:nth-child(1),
+    .feature-card:nth-child(4) {
+      transform: translateY(var(--spacing-s6));
+    }
+
+    .steps-grid,
+    .testimonials-grid,
+    .footer-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: start;
+    }
+
+    .footer nav {
+      justify-content: end;
+    }
+  }
+</style>

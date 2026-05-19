@@ -1,0 +1,83 @@
+---
+import logo from "../../assets/logo.svg";
+import Button from "../ui/Button.astro";
+---
+
+<header class="site-header">
+  <div class="nav-inner container">
+    <a class="brand" href="#top" aria-label="Ir al inicio de Lumen">
+      <img src={logo.src} width="194" height="164" alt="" />
+      <span>lumen</span>
+    </a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#testimonials">Reviews</a>
+    </nav>
+    <Button href="#download" variant="primary">Download Free</Button>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    z-index: 20;
+    top: 0;
+    border-bottom: var(--spacing-px) solid color-mix(in srgb, var(--color-border) 76%, transparent);
+    background: color-mix(in srgb, var(--color-background) 84%, transparent);
+    backdrop-filter: blur(var(--spacing-s3));
+  }
+
+  .nav-inner {
+    display: flex;
+    min-height: var(--size-nav-height);
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-s4);
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-s2);
+    font-family: var(--font-primary), monospace;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .brand img {
+    width: var(--spacing-s10);
+    height: auto;
+  }
+
+  .nav-links {
+    display: none;
+    align-items: center;
+    gap: var(--spacing-s6);
+    color: var(--color-text-muted);
+    font-family: var(--font-primary), monospace;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .nav-links a {
+    transition: color 180ms ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 25rem) {
+    .site-header :global(.button) {
+      padding-inline: var(--spacing-s3);
+      font-size: var(--font-size-xs);
+    }
+  }
+
+  @media (min-width: 48rem) {
+    .nav-links {
+      display: flex;
+    }
+  }
+</style>

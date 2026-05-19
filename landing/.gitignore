@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.astro/
+.vercel/
+.netlify/
+.output/
+
+.augments
+.agents
+
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Caches
+.cache/
+.vite/
+
+# Local tooling
+.codex/
+
+# OS files
+.DS_Store
+Thumbs.db
