@@ -3,12 +3,13 @@ image: node:lts
 pages:
   cache:
     paths:
-      - node_modules/
+      - landing/node_modules/
   stage: deploy
   script:
-    - npm ci
+    - cd landing
+    - npm install
     - npm run build
-    - mv dist public
+    - mv dist ../public
   artifacts:
     paths:
       - public
